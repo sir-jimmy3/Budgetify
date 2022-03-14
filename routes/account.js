@@ -1,28 +1,16 @@
 const express = require('express')
+const { getAccount, getAvailableSum, createAccount, deleteAccount, updateAccount } = require('../controllers/account')
+
 const router = express.Router()
 
-router.get('/:id', (req, res) => {
-  res.send('Read account [GET from account.js]')
-})
+router.get('/:userId/:id', getAccount)
 
-router.get('/', (req, res) => {
-  res.send('Read accounts [GET from account.js]')
-})
+router.get('/available_sum/:userId/:id', getAvailableSum)
 
-router.get('/available_sum/:id', (req, res) => {
-  res.send('Accounts available sum')
-})
+router.post('/', createAccount)
 
-router.post('/', (req, res) => {
-  res.send('Create account [POST from account.js]')
-})
+router.delete('/:id', deleteAccount)
 
-router.delete('/:id', (req, res) => {
-  res.send('Remove account [DELETE from account.js]')
-})
-
-router.put('/:id', (req, res) => {
-  res.send('Update account [PUT from account.js]')
-})
+router.put('/:id', updateAccount)
 
 module.exports = router

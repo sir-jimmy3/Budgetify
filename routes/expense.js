@@ -1,24 +1,13 @@
 const express = require('express')
+const {getExpense, createExpense, deleteExpense, updateExpense} = require('../controllers/expense')
 const router = express.Router()
 
-router.get('/:id', (req, res) => {
-  res.send('Read expense [GET from expense.js]')
-})
+router.get('/:id', getExpense)
 
-router.get('/', (req, res) => {
-  res.send('Read expenses [GET from expense.js]')
-})
+router.post('/', createExpense)
 
-router.post('/', (req, res) => {
-  res.send('Create expense [POST from expense.js]')
-})
+router.delete('/:id', deleteExpense)
 
-router.delete('/:id', (req, res) => {
-  res.send('Remove expense [DELETE from expense.js]')
-})
-
-router.put('/:id', (req, res) => {
-  res.send('Update expense [PUT from expense.js]')
-})
+router.put('/:id', updateExpense)
 
 module.exports = router
